@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Rock Paper Scissors</string>
+    <string name="zero">0</string>
+    <string name="rock">Rock</string>
+    <string name="paper">Paper</string>
+    <string name="scissors">Scissors</string>
+    <string name="rocks">Rock: 33%</string>
+    <string name="papers">Paper: 33%</string>
+    <string name="scissor">Scissors: 33%</string>
+    <string name="rps">Rock Paper Scissors Shoot!</string>
+    <string name="wins">Wins</string>
+    <string name="ties">Ties</string>
+    <string name="Losses">Losses</string>
+    <string name="choice">Computer Choice Percentages:</string>
+    <string name="con">Confidence:\n-33%</string>
+    <string name="on">Turn Ads On</string>
+    <string name="off">Turn Ads Off</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+</resources>
