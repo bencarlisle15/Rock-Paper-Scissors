@@ -15,5 +15,6 @@
     <string name="con">Confidence:\n-33%</string>
     <string name="on">Turn Ads On</string>
     <string name="off">Turn Ads Off</string>
+    <string name="clear">Clear</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

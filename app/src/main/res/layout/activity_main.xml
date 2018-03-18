@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.carlisle.ben.rockpaperscissors.MainActivity"
-    android:background="#44ddff">
+    android:background="#04a7ff"
+    tools:ignore="Overdraw">
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
@@ -28,7 +29,8 @@
         android:textColor="#000000"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        tools:ignore="SpUsage"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -81,7 +83,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_alignParentTop="true"
-            android:background="#ffcc22"
+            android:background="#ff5804"
             android:padding="8dp"
             android:id="@+id/linearLayout">
 
@@ -159,7 +161,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/percentages"
-            android:background="#ffcc22"
+            android:background="#ff5804"
             android:padding="8dp"
             android:layout_marginBottom="12dp"
             android:orientation="vertical"
@@ -176,7 +178,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:baselineAligned="false">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -237,7 +240,7 @@
                         android:gravity="center"
                         android:onClick="clear"
                         android:textColor="#aa0000"
-                        android:text="Clear"/>
+                        android:text="@string/clear"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

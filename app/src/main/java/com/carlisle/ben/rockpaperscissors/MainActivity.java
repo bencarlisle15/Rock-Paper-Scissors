@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,8 +16,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,15 +36,13 @@ public class MainActivity extends AppCompatActivity {
     private int secondResult=-1;
     private int secondCompMove=-1;
 
-    private static final String TAG = "MainActivity";
-    private AdView mAdView;
 	private int status=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mAdView = (AdView) findViewById(R.id.adView);
+		AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
     }
@@ -68,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 							status = 1;
 							i.setTitle(R.string.on);
 							findViewById(R.id.adView).setVisibility(View.INVISIBLE);
-							LinearLayout l = (LinearLayout) findViewById(R.id.buttons);
+							LinearLayout l = findViewById(R.id.buttons);
 							RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) l.getLayoutParams();
 							params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
 							l.setLayoutParams(params);
@@ -83,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 		} else if (status == 1) {
 			findViewById(R.id.adView).setVisibility(View.VISIBLE);
 			i.setTitle(R.string.off);
-			LinearLayout l = (LinearLayout) findViewById(R.id.buttons);
+			LinearLayout l = findViewById(R.id.buttons);
 			RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) l.getLayoutParams();
 			params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 0);
 			l.setLayoutParams(params);
@@ -147,18 +142,22 @@ public class MainActivity extends AppCompatActivity {
            text+="It's a Tie.";
         else if (resultStatus==2)
             text+="You Lose!";
-        TextView output=(TextView)findViewById(R.id.output);
+        TextView output= findViewById(R.id.output);
         output.setText(text);
         trainModel(resultStatus,compMoveInt);
 		float[] percentages=analyzeResults();
 		int[] changes=changes(percentages);
 		int rockChance=changes[0];
 		int paperChance=changes[1];
-		((TextView) findViewById(R.id.rPer)).setText("Rock: "+String.valueOf(rockChance)+"%");
-		((TextView) findViewById(R.id.pPer)).setText("Paper: "+String.valueOf(paperChance)+"%");
-		((TextView) findViewById(R.id.sPer)).setText("Scissors: "+String.valueOf(100-rockChance-paperChance)+"%");
+		text = "Rock: "+String.valueOf(rockChance)+"%";
+		((TextView) findViewById(R.id.rPer)).setText(text);
+		text = "Paper: "+String.valueOf(paperChance)+"%";
+		((TextView) findViewById(R.id.pPer)).setText(text);
+		text = "Scissors: "+String.valueOf(100-rockChance-paperChance)+"%";
+		((TextView) findViewById(R.id.sPer)).setText(text);
 		int top=Math.max(rockChance,Math.max(paperChance,100-rockChance-paperChance));
-		((TextView) findViewById(R.id.confidence)).setText("Confidence\n"+String.valueOf(Math.round(2*(top-50)))+"%");
+		text = "Confidence\n"+String.valueOf(Math.round(2*(top-50)))+"%";
+		((TextView) findViewById(R.id.confidence)).setText(text);
     }
 
     private int nextCompMove()
@@ -200,7 +199,8 @@ public class MainActivity extends AppCompatActivity {
             return percentages;
 
         int[][] relevantResults;
-        if (lastResult!=-1)
+		//noinspection ConstantConditions
+		if (lastResult!=-1)
         {
             int[][] resultsTo2D;
             int[][] results4DTo2D=results4D[lastResult][lastCompMove];
@@ -277,21 +277,21 @@ public class MainActivity extends AppCompatActivity {
         if (compMoveInt==0&&userMoveInt==1||compMoveInt==1&&userMoveInt==2||compMoveInt==2&&userMoveInt==0)
         {
             resultStatus = 0;
-            TextView wins=(TextView)findViewById(R.id.wins);
+            TextView wins= findViewById(R.id.wins);
             int winAmount=Integer.parseInt(wins.getText().toString());
             wins.setText(String.valueOf(winAmount+1));
         }
         else if (compMoveInt==userMoveInt)
         {
             resultStatus = 1;
-            TextView ties=(TextView)findViewById(R.id.ties);
+            TextView ties= findViewById(R.id.ties);
             int tieAmount=Integer.parseInt(ties.getText().toString());
             ties.setText(String.valueOf(tieAmount+1));
         }
         else
         {
             resultStatus = 2;
-            TextView losses=(TextView)findViewById(R.id.losses);
+            TextView losses= findViewById(R.id.losses);
             int lossAmount=Integer.parseInt(losses.getText().toString());
             losses.setText(String.valueOf(lossAmount+1));
         }
@@ -338,10 +338,14 @@ public class MainActivity extends AppCompatActivity {
 		int[] changes=changes(percentages);
 		int rockChance=changes[0];
 		int paperChance=changes[1];
-		((TextView) findViewById(R.id.rPer)).setText("Rock: "+String.valueOf(rockChance)+"%");
-		((TextView) findViewById(R.id.pPer)).setText("Paper: "+String.valueOf(paperChance)+"%");
-		((TextView) findViewById(R.id.sPer)).setText("Scissors: "+String.valueOf(100-rockChance-paperChance)+"%");
+		String text = "Rock: "+String.valueOf(rockChance)+"%";
+		((TextView) findViewById(R.id.rPer)).setText(text);
+		text = "Paper: "+String.valueOf(paperChance)+"%";
+		((TextView) findViewById(R.id.pPer)).setText(text);
+		text = "Scissors: "+String.valueOf(100-rockChance-paperChance)+"%";
+		((TextView) findViewById(R.id.sPer)).setText(text);
 		int top=Math.max(rockChance,Math.max(paperChance,100-rockChance-paperChance));
-		((TextView) findViewById(R.id.confidence)).setText("Confidence\n"+String.valueOf(Math.round(2*(top-50)))+"%");
+		text = "Confidence\n"+String.valueOf(Math.round(2*(top-50)))+"%";
+		((TextView) findViewById(R.id.confidence)).setText(text);
 	}
 }
